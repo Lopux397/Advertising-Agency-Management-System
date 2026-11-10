@@ -3,18 +3,20 @@
 #include <string>
 #include <iostream>
 #include <limits>
+#include <string_view>
 
 class Client
 {
 private:
-    int id;
+    int id{};
+    inline static int nextId{1};
     std::string name;
     std::string contactPerson;
     std::string phone;
     std::string email;
 public:
     Client();
-    Client(int idTemp, std::string_view nameTemp, std::string_view contactPersonTemp, std::string_view phoneTemp, std::string_view emailTemp);
+    Client(std::string_view nameTemp, std::string_view contactPersonTemp, std::string_view phoneTemp, std::string_view emailTemp);
 
     int getId() const;
     std::string getName() const;
@@ -40,9 +42,6 @@ public:
     }
     friend std::istream& operator>> (std::istream& is, Client& client)
     {
-        is >> client.id;
-        is.clear();
-        is.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
         std::getline(is, client.name);
         std::getline(is, client.contactPerson);
         std::getline(is, client.phone);
