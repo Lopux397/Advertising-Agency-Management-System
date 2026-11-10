@@ -1,6 +1,8 @@
 #pragma once
 
 #include <string>
+#include <iostream>
+#include <limits>
 
 class Client
 {
@@ -26,4 +28,25 @@ public:
     void setEmail(std::string_view emailTemp);
 
     bool operator== (const Client& client) const;
+
+    friend std::ostream& operator<< (std::ostream& os, const Client& client)
+    {
+        os << client.id << std::endl;
+        os << client.name << std::endl;
+        os << client.contactPerson << std::endl;
+        os << client.phone << std::endl;
+        os << client.email << std::endl;
+        return os;
+    }
+    friend std::istream& operator>> (std::istream& is, Client& client)
+    {
+        is >> client.id;
+        is.clear();
+        is.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
+        std::getline(is, client.name);
+        std::getline(is, client.contactPerson);
+        std::getline(is, client.phone);
+        std::getline(is, client.email);
+        return is;
+    }
 };
