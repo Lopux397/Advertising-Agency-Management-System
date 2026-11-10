@@ -14,6 +14,8 @@ qt_add_executable(Advertising-Agency-Management-System
     forms/mainwindow.ui
     headers/client.h
     sources/client.cpp
+    headers/specialist.h
+    sources/specialist.cpp
 )
 
 target_link_libraries(Advertising-Agency-Management-System
