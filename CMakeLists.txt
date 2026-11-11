@@ -5,7 +5,7 @@ find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets)
 
 qt_standard_project_setup()
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
@@ -21,6 +21,10 @@ qt_add_executable(Advertising-Agency-Management-System
     sources/specialist.cpp
     headers/budget.h
     sources/budget.cpp
+    headers/advertisingCampaign.h
+    sources/advertisingCampaign.cpp
+    headers/date.h
+    sources/date.cpp
 )
 
 target_link_libraries(Advertising-Agency-Management-System

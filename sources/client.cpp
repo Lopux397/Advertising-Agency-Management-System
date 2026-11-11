@@ -4,10 +4,10 @@ Client::Client() : id(nextId++) {}
 Client::Client(std::string_view nameTemp, std::string_view contactPersonTemp, std::string_view phoneTemp, std::string_view emailTemp) : id(nextId++), name(nameTemp), contactPerson(contactPersonTemp), phone(phoneTemp), email(emailTemp) {}
 
 int Client::getId() const { return id; }
-std::string Client::getName() const { return name; }
-std::string Client::getContactPerson() const { return contactPerson; }
-std::string Client::getPhone() const { return phone; }
-std::string Client::getEmail() const { return email; }
+std::string_view Client::getName() const { return name; }
+std::string_view Client::getContactPerson() const { return contactPerson; }
+std::string_view Client::getPhone() const { return phone; }
+std::string_view Client::getEmail() const { return email; }
 
 void Client::setName(std::string_view nameTemp) { name = nameTemp; }
 void Client::setContactPerson(std::string_view contactPersonTemp) { contactPerson = contactPersonTemp; }

@@ -25,10 +25,10 @@ public:
     Specialist(std::string_view nameTemp, SpecialistType specializationTemp, std::string_view phoneTemp, std::string_view emailTemp);
 
     int getId() const;
-    std::string getName() const;
+    std::string_view getName() const;
     SpecialistType getSpecialization() const;
-    std::string getPhone() const;
-    std::string getEmail() const;
+    std::string_view getPhone() const;
+    std::string_view getEmail() const;
 
     void setName(std::string_view nameTemp);
     void setSpecialization(SpecialistType specializationTemp);

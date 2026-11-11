@@ -2,7 +2,6 @@
 
 #include <string>
 #include <iostream>
-#include <limits>
 #include <string_view>
 
 class Client
@@ -19,10 +18,10 @@ public:
     Client(std::string_view nameTemp, std::string_view contactPersonTemp, std::string_view phoneTemp, std::string_view emailTemp);
 
     int getId() const;
-    std::string getName() const;
-    std::string getContactPerson() const;
-    std::string getPhone() const;
-    std::string getEmail() const;
+    std::string_view getName() const;
+    std::string_view getContactPerson() const;
+    std::string_view getPhone() const;
+    std::string_view getEmail() const;
 
     void setName(std::string_view nameTemp);
     void setContactPerson(std::string_view contactPersonTemp);
