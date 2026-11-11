@@ -1,6 +1,6 @@
 #include "../headers/advertisingCampaign.h"
 
-AdvertisingCampaign::AdvertisingCampaign(int clientIdTemp,const Budget& budgetTemp, std::string_view nameTemp, std::string_view descriptionTemp, const Date& startDateTemp, const Date& endDateTemp, CampaignStatus statusTemp) : clientId(clientIdTemp), budget(budgetTemp), name(nameTemp), description(descriptionTemp), startDate(startDateTemp), endDate(endDateTemp), status(statusTemp)
+AdvertisingCampaign::AdvertisingCampaign(int clientIdTemp,const Budget& budgetTemp, std::string_view nameTemp, std::string_view descriptionTemp, const Date& startDateTemp, const Date& endDateTemp, CampaignStatus statusTemp) : id(nextId++) , clientId(clientIdTemp), budget(budgetTemp), name(nameTemp), description(descriptionTemp), startDate(startDateTemp), endDate(endDateTemp), status(statusTemp)
 {
     if (endDate < startDate)
         throw std::invalid_argument("End date cannot be earlier than start date");

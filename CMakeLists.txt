@@ -25,6 +25,8 @@ qt_add_executable(Advertising-Agency-Management-System
     sources/advertisingCampaign.cpp
     headers/date.h
     sources/date.cpp
+    headers/service.h
+    sources/service.cpp
 )
 
 target_link_libraries(Advertising-Agency-Management-System
