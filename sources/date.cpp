@@ -4,7 +4,7 @@
 #include <array>
 
 Date::Date() = default;
-Date::Date(int dayTemp, int monthTemp, int yearTemp) :year(yearTemp), month(monthTemp), day(dayTemp)
+Date::Date(int dayTemp, int monthTemp, int yearTemp) : year(yearTemp), month(monthTemp), day(dayTemp)
 {
     if (!isValidDate(day, month, year))
         throw std::invalid_argument("Invalid date");

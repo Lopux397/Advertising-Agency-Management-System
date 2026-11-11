@@ -4,7 +4,8 @@
 #include <cmath>
 
 Budget::Budget() = default;
-Budget::Budget(double allocatedAmountTemp, double spentAmountTemp) : allocatedAmount(allocatedAmountTemp), spentAmount(spentAmountTemp)
+Budget::Budget(double allocatedAmountTemp, double spentAmountTemp)
+    : allocatedAmount(allocatedAmountTemp), spentAmount(spentAmountTemp)
 {
     if (!std::isfinite(allocatedAmountTemp) || allocatedAmountTemp < 0)
         throw std::invalid_argument("Allocated amount cannot be negative or invalid");

@@ -1,7 +1,8 @@
 #include "../headers/specialist.h"
 
 Specialist::Specialist() : id(nextId++) {}
-Specialist::Specialist(std::string_view nameTemp, SpecialistType specializationTemp, std::string_view phoneTemp, std::string_view emailTemp) : id(nextId++), name(nameTemp), specialization(specializationTemp), phone(phoneTemp), email(emailTemp) {}
+Specialist::Specialist(std::string_view nameTemp, SpecialistType specializationTemp, std::string_view phoneTemp, std::string_view emailTemp)
+    : id(nextId++), name(nameTemp), specialization(specializationTemp), phone(phoneTemp), email(emailTemp) {}
 
 int Specialist::getId() const { return id; }
 std::string_view Specialist::getName() const { return name; }

@@ -12,8 +12,9 @@ private:
     std::string name;
     std::string description;
     std::vector<int> specialistIds;
-public:
+protected:
     Service(std::string_view nameTemp, std::string_view descriptionTemp, const std::vector<int>& specialistIdsTemp);
+public:
     virtual ~Service() = default;
 
     int getId() const;

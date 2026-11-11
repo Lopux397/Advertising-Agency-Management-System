@@ -3,8 +3,8 @@
 class Budget
 {
 private:
-    double allocatedAmount{0.0};
-    double spentAmount{0.0};
+    double allocatedAmount{};
+    double spentAmount{};
 public:
     Budget();
     Budget(double allocatedAmountTemp, double spentAmountTemp);

@@ -1,7 +1,8 @@
 #include "../headers/client.h"
 
 Client::Client() : id(nextId++) {}
-Client::Client(std::string_view nameTemp, std::string_view contactPersonTemp, std::string_view phoneTemp, std::string_view emailTemp) : id(nextId++), name(nameTemp), contactPerson(contactPersonTemp), phone(phoneTemp), email(emailTemp) {}
+Client::Client(std::string_view nameTemp, std::string_view contactPersonTemp, std::string_view phoneTemp, std::string_view emailTemp)
+    : id(nextId++), name(nameTemp), contactPerson(contactPersonTemp), phone(phoneTemp), email(emailTemp) {}
 
 int Client::getId() const { return id; }
 std::string_view Client::getName() const { return name; }
