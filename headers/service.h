@@ -13,7 +13,7 @@ private:
     std::string description;
     std::vector<int> specialistIds;
 public:
-    Service(std::string_view nameTemp, std::string_view descriptionTemp, std::vector<int> specialistIdsTemp);
+    Service(std::string_view nameTemp, std::string_view descriptionTemp, const std::vector<int>& specialistIdsTemp);
     virtual ~Service() = default;
 
     int getId() const;

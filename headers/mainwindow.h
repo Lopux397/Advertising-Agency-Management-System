@@ -11,7 +11,6 @@ QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
 {
-private:
     Q_OBJECT
     std::unique_ptr<Ui::MainWindow> ui;
 public:
