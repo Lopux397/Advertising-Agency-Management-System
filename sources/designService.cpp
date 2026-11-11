@@ -1,4 +1,5 @@
 #include "../headers/designService.h"
+#include <stdexcept>
 
 DesignService::DesignService(std::string_view nameTemp, std::string_view descriptionTemp, const std::vector<int>& specialistIdsTemp, double pricePerUnitTemp, int quantityTemp, DifLevels complexityTemp)
     : Service(nameTemp, descriptionTemp, specialistIdsTemp), pricePerUnit(pricePerUnitTemp), quantity(quantityTemp), complexity(complexityTemp) {}
@@ -13,14 +14,18 @@ void DesignService::setComplexity(DifLevels complexityTemp) { complexity = compl
 
 double DesignService::calculateCost() const
 {
+    using enum DifLevels;
+
     switch(complexity)
     {
-    case DifLevels::Simple :
+    case Simple :
         return pricePerUnit * quantity * 1.0;
-    case DifLevels::Medium :
+    case Medium :
         return pricePerUnit * quantity * 1.5;
-    case DifLevels::Complex :
+    case Complex :
         return pricePerUnit * quantity * 2.0;
+    default:
+        throw std::logic_error("Unknown complexity level");
     }
 }
 std::string_view DesignService::getType() const { return "DesignService"; }
