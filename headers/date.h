@@ -22,7 +22,7 @@ public:
     void setDay(int dayTemp);
     void setDate(int dayTemp, int monthTemp, int yearTemp);
 
-    bool isValidDate(int dayTemp, int monthTemp, int yearTemp);
+    bool isValidDate(int dayTemp, int monthTemp, int yearTemp) const;
 
     auto operator<=>(const Date& date) const = default;
 
