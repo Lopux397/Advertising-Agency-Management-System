@@ -31,6 +31,8 @@ qt_add_executable(Advertising-Agency-Management-System
     sources/designService.cpp
     headers/copywritingService.h
     sources/copywritingService.cpp
+    headers/promotionService.h
+    sources/promotionService.cpp
 )
 
 target_link_libraries(Advertising-Agency-Management-System
