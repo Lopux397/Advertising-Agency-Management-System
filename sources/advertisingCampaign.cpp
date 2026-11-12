@@ -1,4 +1,5 @@
 #include "../headers/advertisingCampaign.h"
+#include <stdexcept>
 
 AdvertisingCampaign::AdvertisingCampaign(int clientIdTemp,const Budget& budgetTemp, std::string_view nameTemp, std::string_view descriptionTemp, const Date& startDateTemp, const Date& endDateTemp, CampaignStatus statusTemp)
     : id(nextId++) , clientId(clientIdTemp), budget(budgetTemp), name(nameTemp), description(descriptionTemp), startDate(startDateTemp), endDate(endDateTemp), status(statusTemp)
@@ -19,6 +20,28 @@ CampaignStatus AdvertisingCampaign::getStatus() const { return status; }
 
 void AdvertisingCampaign::setName(std::string_view nameTemp) { name = nameTemp; }
 void AdvertisingCampaign::setDescription(std::string_view descriptionTemp) { description = descriptionTemp; }
-void AdvertisingCampaign::setStartDate(const Date& startDateTemp) { startDate = startDateTemp; }
-void AdvertisingCampaign::setEndDate(const Date& endDateTemp) { endDate = endDateTemp; }
+void AdvertisingCampaign::setStartDate(const Date& startDateTemp)
+{
+    if (startDateTemp > endDate)
+        throw std::invalid_argument("Start date cannot be later than end date");
+
+    startDate = startDateTemp;
+}
+void AdvertisingCampaign::setEndDate(const Date& endDateTemp)
+{
+    if (endDateTemp < startDate)
+        throw std::invalid_argument("End date cannot be earlier than start date");
+
+    endDate = endDateTemp;
+}
 void AdvertisingCampaign::setStatus(CampaignStatus statusTemp) { status = statusTemp; }
+void AdvertisingCampaign::setPeriod(const Date& startDateTemp, const Date& endDateTemp)
+{
+    if (startDateTemp > endDateTemp)
+        throw std::invalid_argument("Start date cannot be later than end date");
+    if (endDateTemp < startDateTemp)
+        throw std::invalid_argument("End date cannot be earlier than start date");
+
+    startDate = startDateTemp;
+    endDate = endDateTemp;
+}

@@ -45,5 +45,6 @@ public:
     void setStartDate(const Date& startDateTemp);
     void setEndDate(const Date& endDateTemp);
     void setStatus(CampaignStatus statusTemp);
+    void setPeriod(const Date& startDateTemp, const Date& endDateTemp);
 
 };

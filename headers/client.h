@@ -32,7 +32,6 @@ public:
 
     friend std::ostream& operator<< (std::ostream& os, const Client& client)
     {
-        os << client.id << std::endl;
         os << client.name << std::endl;
         os << client.contactPerson << std::endl;
         os << client.phone << std::endl;

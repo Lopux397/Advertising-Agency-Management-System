@@ -20,11 +20,10 @@ public:
     int getId() const;
     std::string_view getName() const;
     std::string_view getDescription() const;
-    std::vector<int> getSpecialistIds() const;
+    const std::vector<int>& getSpecialistIds() const;
 
     void setName(std::string_view nameTemp);
     void setDescription(std::string_view descriptionTemp);
-    void setSpecialistIds(std::vector<int> specialistIdsTemp);
 
     bool assignSpecialist(int specialistId);
     bool removeSpecialist(int specialistId);

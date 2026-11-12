@@ -10,7 +10,6 @@ private:
     int month{};
     int day{};
 public:
-    Date();
     Date(int dayTemp, int monthTemp, int yearTemp);
 
     int getYear() const;

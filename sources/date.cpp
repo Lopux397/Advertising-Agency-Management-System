@@ -3,7 +3,6 @@
 #include <stdexcept>
 #include <array>
 
-Date::Date() = default;
 Date::Date(int dayTemp, int monthTemp, int yearTemp) : year(yearTemp), month(monthTemp), day(dayTemp)
 {
     if (!isValidDate(day, month, year))

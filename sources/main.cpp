@@ -1,4 +1,11 @@
 #include "../headers/mainwindow.h"
+// #include "../headers/advertisingCampaign.h"
+// #include "../headers/budget.h"
+// #include "../headers/client.h"
+// #include "../headers/date.h"
+// #include "../headers/designService.h"
+// #include "../headers/service.h"
+// #include "../headers/specialist.h"
 
 #include <QApplication>
 

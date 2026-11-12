@@ -1,6 +1,5 @@
 #include "../headers/service.h"
 
-#include <utility>
 #include <algorithm>
 #include <ranges>
 
@@ -10,11 +9,10 @@ Service::Service(std::string_view nameTemp, std::string_view descriptionTemp, co
 int Service::getId() const { return id; }
 std::string_view Service::getName() const { return name; }
 std::string_view Service::getDescription() const { return description; }
-std::vector<int> Service::getSpecialistIds() const { return specialistIds; }
+const std::vector<int>& Service::getSpecialistIds() const { return specialistIds; }
 
 void Service::setName(std::string_view nameTemp) { name = nameTemp; }
 void Service::setDescription(std::string_view descriptionTemp) { description = descriptionTemp; }
-void Service::setSpecialistIds(std::vector<int> specialistIdsTemp) { specialistIds = std::move(specialistIdsTemp); }
 
 bool Service::assignSpecialist(int specialistId)
 {
@@ -29,7 +27,7 @@ bool Service::removeSpecialist(int specialistId)
 {
     auto it = std::ranges::find(specialistIds, specialistId);
 
-    if (it != std::ranges::end(specialistIds)) return false;
+    if (it == std::ranges::end(specialistIds)) return false;
 
     specialistIds.erase(it);
     return true;
