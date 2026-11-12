@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../headers/Service.h"
+#include "../headers/service.h"
 
 class CopywritingService : public Service
 {
