@@ -2,12 +2,13 @@
 
 #include <utility>
 #include <stdexcept>
+#include <ranges>
 #include <algorithm>
 
 Project::Project(int campaignIdTemp, std::string_view nameTemp, std::string_view descriptionTemp, const Date& startDateTemp, const Date& plannedEndDateTemp, ProjectStatus statusTemp, ServiceList servicesTemp)
-    : id(nextId++), campaignId(campaignIdTemp), name(nameTemp), description(descriptionTemp), startDate(startDateTemp), plannedEndDate(plannedEndDateTemp), actualEndDate(std::nullopt), status(statusTemp), services(std::move(servicesTemp))
+    : id(nextId++), campaignId(campaignIdTemp), name(nameTemp), description(descriptionTemp), startDate(startDateTemp), plannedEndDate(plannedEndDateTemp), status(statusTemp), services(std::move(servicesTemp))
 {
-    if (std::any_of(services.begin(), services.end(), [](const auto& service){ return !service; }))
+    if (std::ranges::any_of(services, [](const auto& service){ return !service; }))
         throw std::invalid_argument("Service cannot be null");
     if (isCompleted())
         throw std::invalid_argument("A project cannot be created in a completed state");
@@ -57,8 +58,8 @@ void Project::addService(ServicePtr service)
 
     int serviceId = service->getId();
 
-    if (auto it = std::find_if(services.begin(), services.end(),
-    [serviceId](const auto& existingService){  return existingService->getId() == serviceId; })
+    if (auto it = std::ranges::find_if(services, [serviceId](const auto& existingService)
+    {  return existingService->getId() == serviceId; })
     ; it != services.end())
         throw std::invalid_argument("Service already exists in project");
 
@@ -66,8 +67,8 @@ void Project::addService(ServicePtr service)
 }
 bool Project::removeService(int serviceId)
 {
-    auto it = std::find_if(services.begin(), services.end(),
-        [serviceId](const auto& existingService){ return existingService->getId() == serviceId; });
+    auto it = std::ranges::find_if(services, [serviceId](const auto& existingService)
+        { return existingService->getId() == serviceId; });
 
     if (it == services.end()) return false;
 
@@ -77,8 +78,8 @@ bool Project::removeService(int serviceId)
 
 Service* Project::findServiceById(int serviceId)
 {
-    auto it = std::find_if(services.begin(), services.end(),
-       [serviceId](const auto& existingService){ return existingService->getId() == serviceId; });
+    auto it = std::ranges::find_if(services, [serviceId](const auto& existingService)
+        { return existingService->getId() == serviceId; });
 
     if (it == services.end())
         return nullptr;
@@ -87,8 +88,8 @@ Service* Project::findServiceById(int serviceId)
 }
 const Service* Project::findServiceById(int serviceId) const
 {
-    auto it = std::find_if(services.begin(), services.end(),
-        [serviceId](const auto& existingService){ return existingService->getId() == serviceId; });
+    auto it = std::ranges::find_if(services, [serviceId](const auto& existingService)
+        { return existingService->getId() == serviceId; });
 
     if (it == services.end())
         return nullptr;

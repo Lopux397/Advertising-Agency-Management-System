@@ -30,7 +30,7 @@ private:
     std::string description;
     Date startDate;
     Date plannedEndDate;
-    std::optional<Date> actualEndDate;
+    std::optional<Date> actualEndDate{std::nullopt};
     ProjectStatus status;
     ServiceList services;
 public:
