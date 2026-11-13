@@ -11,21 +11,21 @@ void ProjectReadinessChecker::checkProject(const Project& project, const Collect
     const AdvertisingCampaign* campaign =
         campaigns.findById(project.getCampaignId());
     if (campaign == nullptr)
-        issues.push_back("The project's advertising campaign was not found");
+        issues.emplace_back("The project's advertising campaign was not found");
 
     if (project.getServices().empty())
-        issues.push_back("The project contains no services");
+        issues.emplace_back("The project contains no services");
 
     for (const auto& service : project.getServices())
     {
         if (service->getSpecialistIds().empty())
         {
-            issues.push_back("A service has no assigned specialists");
+            issues.emplace_back("A service has no assigned specialists");
             continue;
         }
         for (int specialistId : service->getSpecialistIds())
             if (specialists.findById(specialistId) == nullptr)
-                issues.push_back("A service contains a non-existent specialist");
+                issues.emplace_back("A service contains a non-existent specialist");
     }
 
     if (campaign != nullptr)
@@ -36,7 +36,7 @@ void ProjectReadinessChecker::checkProject(const Project& project, const Collect
             if (currentProject.getCampaignId() == project.getCampaignId())
                 totalCost += currentProject.calculateTotalCost();
         if (totalCost > campaign->getBudget().getAllocatedAmount())
-            issues.push_back("The campaign budget has been exceeded");
+            issues.emplace_back("The campaign budget has been exceeded");
     }
 }
 

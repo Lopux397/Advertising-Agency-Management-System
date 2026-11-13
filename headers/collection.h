@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <utility>
+#include <ranges>
 #include <algorithm>
 #include <algorithm>
 
@@ -70,6 +71,6 @@ public:
     template<typename Compare>
     void sort(Compare compare)
     {
-        std::sort(items.begin(), items.end(), compare);
+        std::ranges::sort(items, compare);
     }
 };
