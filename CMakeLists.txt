@@ -35,8 +35,10 @@ qt_add_executable(Advertising-Agency-Management-System
     sources/promotionService.cpp
     headers/project.h
     sources/project.cpp
-    headers/сollection.h
+    headers/collection.h
     headers/collectionUtils.h
+    headers/projectReadinessChecker.h
+    sources/projectReadinessChecker.cpp
 )
 
 target_link_libraries(Advertising-Agency-Management-System
